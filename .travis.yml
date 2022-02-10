@@ -6,7 +6,7 @@ before-install:
   - docker build -t jeremybjohnson/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run jeremybjohnson/react-test npm test -- --coverage 
+  - docker run -e CI=true USERNAME/react-test npm test
   # -- --coverage makes test terminate
 
 after_success: 
@@ -15,5 +15,12 @@ after_success:
   - docker build -t jeremybjohnson/multi-server ./server
   - docker build -t jeremybjohnson/multi-worker ./worker
   # login to docker cli
-  
+  # travis cli specific code to login to docker
+  - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin
   # take those images and push to docker hub
+  - docker push jeremybjohnson/multi-client
+  - docker push jeremybjohnson/multi-worker
+  - docker push jeremybjohnson/multi-nginx
+  - docker push jeremybjohnson/multi-server
+
+
