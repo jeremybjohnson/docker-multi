@@ -13,7 +13,7 @@ function App() {
           <p>
             <Link to="/">Home</Link>&nbsp;&nbsp;<Link to="/otherpage">Other Page</Link>
           </p>
-          <br><br>
+          <br></br>         
         </header>
         <div>
           <Route exact path="/" component={Fib} />
