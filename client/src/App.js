@@ -10,8 +10,10 @@ function App() {
     <Router>
       <div className="App">
         <header>
-          <Link to="/">Home</Link>
-          <Link to="/otherpage">Other Page</Link>
+          <p>
+            <Link to="/">Home</Link>&nbsp;&nbsp;<Link to="/otherpage">Other Page</Link>
+          </p>
+          <br><br>
         </header>
         <div>
           <Route exact path="/" component={Fib} />
